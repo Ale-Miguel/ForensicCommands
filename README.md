@@ -24,7 +24,10 @@ Mount a volume with read only mode enable and offset if the data doesn't start i
 ```
 sudo mount -o ro,offser=<BYTES_VALUE_TO_MOUNT> <VOULUME> <PATH_TO_MOUNT>
 ```
-
+Disasemble an executable:
+```
+objdump -S <FILE>
+```
 ## File System Operations ##
 
 It is recommended to create several mounting directories ie. /mnt/loop0 /mnt/loop1 ...
