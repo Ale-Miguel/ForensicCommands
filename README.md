@@ -181,7 +181,7 @@ Example|	01 20210808 20210800
 Temp files from IE can be found in:
 * Spanish: *'/Users/issa/AppData/Local/Archivos temporales de Internet/Low/Content.IE5/'*
 
-#### Get Windows info ####
+### Get Windows info ###
 
 Get product name complete windows name:
 ```
