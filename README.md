@@ -233,7 +233,7 @@ Get browsing history of IE:
 pasco <MOUNTED_DIR>/Users/<USERNAME>/AppData/Local/Historial/History.IE5/MSHIST<DATE_FORMAT>/index.dat
 ```
 
-#### Firewall Configuration ####
+### Windows Firewall Configuration ###
 
 Check if firewall is enabled:
 ```
