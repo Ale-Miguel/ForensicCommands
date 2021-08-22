@@ -130,3 +130,8 @@ Get data of a certain object (could be a JS code):
 ```
 python2 /usr/local/bin/pdf-parser.py -o <OBJECT_NUMBER> -f -w <PDF_FILE>
 ```
+## Clamscan (Antivirus) ##
+Run clamsan AV to a directory:
+```
+clamscan -ri <DIRECTORY_TO_SCAN>
+```
