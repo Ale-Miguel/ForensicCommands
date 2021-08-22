@@ -82,3 +82,20 @@ To mount a hidden volume, we need to only write the password of that hidden volu
 ```
 veracrypt --text --truecrypt --mount <IMAGE_TO_MOUNT> <PATH_TO_MOUNT>
 ```
+
+## Steganography ##
+
+Check for steganography
+```
+steghide info <FILE_NAME>
+```
+
+Extract files from a stegnographied file
+```
+steghide extract -sf <FILE_NAME>
+```
+
+Get metadata
+```
+exiftool <FILE_NAME>
+```
