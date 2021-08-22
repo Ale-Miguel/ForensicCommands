@@ -142,6 +142,13 @@ Run clamsan AV to a directory or file:
 clamscan -ri <DIRECTORY/FILE_TO_SCAN>
 ```
 
+## Snort
+
+Run Snort to a file or directory
+
+```
+sudo snort -q -A console -c /etc/snort/snort.conf -r <FILE>
+```
 ## Windows Registry ##
 
 Windows Registry: Contains all information about which programs are installed, users, logs, events, activation keys, 
