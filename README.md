@@ -282,3 +282,29 @@ Get what is executed everytime that a user logs in:
 ```
 reglookup -p /SOFTWARE/Microsoft/Windows/CurrentVersion/RUN <MOUNTED_DIR>/Documents\ and\ Settings/<USERNAME>/NTUSER.DAT
 ```
+## Network Forensics ##
+
+Get info of a pcap file
+```
+capinfos <PCAP_FILE>
+```
+
+Get IP involved in the capture:
+```
+tshark -r <PCAP_FILE> -z ip_hosts,tree -qn
+```
+
+Get conversations captured in the pcap file:
+```
+tshark -r <PCAP_FILE> -qnz conv,tcp
+```
+
+Get all SYN packets (where the communications starts if captured):
+```
+tshark -r <PCAP_FILE> -Y "tcp.flags==0x02" -n
+```
+
+Get all TCP flows captured in the pcap file:
+```
+tcpflow -r <PCAP_FILE>
+```
