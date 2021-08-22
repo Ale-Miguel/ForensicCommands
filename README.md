@@ -318,3 +318,35 @@ Get all TCP flows captured in the pcap file:
 ```
 tcpflow -r <PCAP_FILE>
 ```
+
+## Memory Forensics Analysis ##
+
+Volatility is a Framework for memory analysis
+
+Get info of a memory dump:
+
+```
+volatility imageinfo -f <MEMORY_FILE>
+```
+
+List proceess that were executing when the dump was done:
+```
+volatility pslist -f <MEMORY_FILE>
+```
+
+List connections of the machine:
+```
+volatility connections -f <MEMORY_FILE>
+```
+Extract process
+
+```
+volatility memdump -p <PROCESS_ID> -f <MEMORY_FILE> --dump-dir <DIRECTORY_2_SAVE_DUMP>
+```
+
+Extract all files, dlls, etc of a dumped process
+```
+foremost -i <DUMP_FILE> -o <TARGET_TO_SAVE_ALL_INFO>
+```
+
+
