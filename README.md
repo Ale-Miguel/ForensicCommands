@@ -99,3 +99,34 @@ Get metadata
 ```
 exiftool <FILE_NAME>
 ```
+## PDF Analysis ##
+
+Get internal characteristics
+```
+pdfid.py <FILE_NAME>
+```
+
+If we suspect that a PDF is used as a USB FS to store files
+```
+mount_pdf <PDF_FILE_NAME> <DEST_TO_MOUNT> (optional & to send to bg)
+```
+
+Get location of JS code
+```
+pdf-parser.py --raw --search javascript <PDF_FILE> 
+```
+
+Get info from a specific object
+```
+pdf-parser.py -o <BLOCK_NUM> <PDF_FILE>
+```
+
+Get info from who calls an especific object
+```
+pdf-parser.py -r <BLOCK_NUM> <PDF_FILE>
+```
+
+Get data of a certain object (could be a JS code)
+```
+python2 /usr/local/bin/pdf-parser.py -o <OBJECT_NUMBER> -f -w <PDF_FILE>
+```
