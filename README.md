@@ -66,6 +66,9 @@ Check if a block is part of a file (looking at the hex representation):
 blkcat <FS_IMAGE> <BLOCK_NUM> | xxd | more
 ```
 
+Get all deleted files from a FS image:
+fls -d -r <FS_IMAGE>
+
 ## Veracrypt ##
 
 Decrypt encrypted files or FS. If we don't have any aditional info, we can press ENTER to skip:
@@ -274,4 +277,8 @@ evtextport -m all -t security -m all -t security -r <MOUNTED_DIR>/WINDOWS/system
 Get Application event log:
 ```
 evtextport -m all -t system -m all -t application -r <MOUNTED_DIR>/WINDOWS/system32/config/ <MOUNTED_DIR>/WINDOWS/system32/config/AppEvent.Evt
+```
+Get what is executed everytime that a user logs in:
+```
+reglookup -p /SOFTWARE/Microsoft/Windows/CurrentVersion/RUN <MOUNTED_DIR>/Documents\ and\ Settings/<USERNAME>/NTUSER.DAT
 ```
