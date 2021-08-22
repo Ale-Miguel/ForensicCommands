@@ -259,3 +259,19 @@ Check for authorized applications:
 ```
 reglookup -p /ControlSet002/Services/SharedAccess/Parameters/FirewallPolicy/StandardProfile/AuthorizedApplications/List <MOUNTED_DIR>/WINDOWS/system32/config/system
 ```
+### Windows logs ###
+
+Get System event log:
+```
+evtextport -m all -t system -m all -t system -r <MOUNTED_DIR>/WINDOWS/system32/config/ <MOUNTED_DIR>/WINDOWS/system32/config/SysEvent.Evt
+```
+
+Get Security event log:
+```
+evtextport -m all -t security -m all -t security -r <MOUNTED_DIR>/WINDOWS/system32/config/ <MOUNTED_DIR>/WINDOWS/system32/config/SecEvent.Evt
+```
+
+Get Application event log:
+```
+evtextport -m all -t system -m all -t application -r <MOUNTED_DIR>/WINDOWS/system32/config/ <MOUNTED_DIR>/WINDOWS/system32/config/AppEvent.Evt
+```
