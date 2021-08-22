@@ -135,3 +135,127 @@ Run clamsan AV to a directory:
 ```
 clamscan -ri <DIRECTORY_TO_SCAN>
 ```
+
+## Windows Registry ##
+
+Windows Registry: Contains all information about which programs are installed, users, logs, events, activation keys, 
+* regedit
+
+Initial regedit keys:
+* HKEY_LOCAL_MACHINE or HKLM [IN C:\windows\system32\config]
+	* HKEY_LOCAL_MACHINE\SAM		SAM
+	* HKEY_LOCAL_MACHINE\Security	security
+	* HKEY_LOCAL_MACHINE\Software	software
+	* HKEY_LOCAL_MACHINE\Systemsystem
+* HKEY_CLASSES_ROOT or HKCR
+* HKEY_USERS or HKU
+	* HK_USERS\DEFAULT	[in C:\windows\system32\config\default]
+* HKYE_CURRENT_CONFIG or HKCC
+* HKEY_CURRENT_USER or HKCU 	[home-user files NTUSER.DAT and USRCLASS.DAT]
+
+Browsing history of IE is stored in:
+*/Users/issa/AppData/Local/Historial/History.IE5/MSHist##################/index.dat*
+
+Representation	|	## ######## ########
+---------------	| -----------------------
+Format	|	cc yyyymmdd yyyymmdd
+Example|	01 20210808 20210800
+
+Temp files from IE can be found in:
+* Spanish: *'/Users/issa/AppData/Local/Archivos temporales de Internet/Low/Content.IE5/'*
+
+#### Get Windows info ####
+
+Get product name complete windows name:
+```
+reglookup -p /Microsoft/Windows\ NT/CurrentVersion/ProductName <MOUNTED_DIR>/Windows/System32/config/SOFTWARE
+```
+Or
+```
+reglookup -p '/Microsoft/Windows NT/CurrentVersion/ProductName' <MOUNTED_DIR>/Windows/System32/config/SOFTWARE
+```
+
+Get product id:
+```
+reglookup -p '/Microsoft/Windows NT/CurrentVersion/ProductID' <MOUNTED_DIR>/Windows/System32/config/SOFTWARE
+```
+
+Get build number or SP:
+```
+reglookup -p '/Microsoft/Windows NT/CurrentVersion/CurrentBuildNumber' <MOUNTED_DIR>/Windows/System32/config/SOFTWARE
+```
+
+Get registered owner of the Windows license:
+```
+reglookup -p '/Microsoft/Windows NT/CurrentVersion/RegisteredOwner' <MOUNTED_DIR>/Windows/System32/config/SOFTWARE
+```
+
+Get registered organization of the Windows license:
+```
+reglookup -p '/Microsoft/Windows NT/CurrentVersion/RegisteredOrganization' <MOUNTED_DIR>/Windows/System32/config/SOFTWARE
+```
+
+Get OS installation date (UNIX Time format):
+```
+reglookup -p '/Microsoft/Windows NT/CurrentVersion/InstallDate' <MOUNTED_DIR>/Windows/System32/config/SOFTWARE
+```
+
+Get computer name:
+```
+reglookup -p '/ControlSet002/Control/ComputerName/ComputerName' <MOUNTED_DIR>/Windows/System32/config/SYSTEM
+```
+
+Get TimeZone:
+```
+reglookup -p '/ControlSet002/Control/TimeZoneInformation/StandardName' <MOUNTED_DIR>/Windows/System32/config/SYSTEM
+```
+```
+reglookup -p '/ControlSet002/Control/TimeZoneInformation/DaylightName' <MOUNTED_DIR>/Windows/System32/config/SYSTEM
+```
+
+Get all installed software:
+```
+reglookup -p '/Microsoft/Windows NT/CurrentVersion/Uninstall' <MOUNTED_DIR>/WINDOWS/System32/config/software
+```
+
+Get all system users:
+```
+samdump2 <MOUNTED_DIR>/WINDOWS/system32/config/system <MOUNTED_DIR>/WINDOWS/system32/config/SAM | cut -d':'-f1'
+```
+
+Get network interfaces configuration:
+```
+reglookup -p /ControlSet002/Services/Tcpiip/Parameters/Interfaces <MOUNTED_DIR>/WINDOWS/system32/config/system
+```
+
+Get browsing history of IE:
+```
+pasco <MOUNTED_DIR>/Users/<USERNAME>/AppData/Local/Historial/History.IE5/MSHIST<DATE_FORMAT>/index.dat
+```
+
+#### Firewall Configuration ####
+
+Check if firewall is enabled:
+```
+reglookup -p /ControlSet002/Services/SharedAccess/Parameters/FirewallPolicy/StandardProfile/EnableFirewall <MOUNTED_DIR>/WINDOWS/system32/config/system
+```
+
+Check allowed exceptions:
+```
+reglookup -p /ControlSet002/Services/SharedAccess/Parameters/FirewallPolicy/StandardProfile/DoNotAllowExceptions <MOUNTED_DIR>/WINDOWS/system32/config/system
+```
+
+Check disabled notifications:
+```
+reglookup -p /ControlSet002/Services/SharedAccess/Parameters/FirewallPolicy/StandardProfile/DisableNotifications <MOUNTED_DIR>/WINDOWS/system32/config/system
+```
+
+Check for allowed open ports:
+```
+reglookup -p /ControlSet002/Services/SharedAccess/Parameters/FirewallPolicy/StandardProfile/GloballyOpenPorts <MOUNTED_DIR>/WINDOWS/system32/config/system
+```
+
+Check for authorized applications:
+```
+reglookup -p /ControlSet002/Services/SharedAccess/Parameters/FirewallPolicy/StandardProfile/AuthorizedApplications/List <MOUNTED_DIR>/WINDOWS/system32/config/system
+```
