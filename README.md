@@ -142,6 +142,10 @@ Run clamsan AV to a directory or file:
 clamscan -ri <DIRECTORY/FILE_TO_SCAN>
 ```
 
+Update Clamscan (datadir is optional, its only if clamscan can't find the virus DB):
+```
+sudo freshclam --datadir="/var/lib/clamav"
+```
 ## Snort
 
 Run Snort to a file or directory
