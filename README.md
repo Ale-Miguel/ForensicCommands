@@ -65,3 +65,20 @@ Check if a block is part of a file (looking at the hex representation)
 ```
 blkcat <FS_IMAGE> <BLOCK_NUM> | xxd | more
 ```
+
+## Veracrypt ##
+
+Decrypt encrypted files or FS. If we don't have any aditional info, we can press ENTER to skip
+```
+veracrypt --text --truecrypt --mount <IMAGE_TO_MOUNT> <PATH_TO_MOUNT>
+```
+
+Unmount encrypted files or FS
+```
+veracrypt --text --truecrypt --dismount  <PATH>
+```
+
+To mount a hidden volume, we need to only write the password of that hidden volume when mounting. If the volume that contains the hidden volume is already mounted, we need to umount it first.
+```
+veracrypt --text --truecrypt --mount <IMAGE_TO_MOUNT> <PATH_TO_MOUNT>
+```
