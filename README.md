@@ -353,4 +353,22 @@ Extract all files, dlls, etc of a dumped process
 foremost -i <DUMP_FILE> -o <TARGET_TO_SAVE_ALL_INFO>
 ```
 
+Volatility have a plugin called malfind to find malware, extracts it and saves it where the user tells him
+```
+volatility malfind -p <PROCESS_ID> -f <MEMORY_FILE> --dump-dir <DIRECTORY_2_PUT_RESULTS>
+```
 
+Extract username accounts
+```
+volatility hivelist -f <MEMORY_FILE>
+```
+
+Get accounts that were utilized when the memory dump was created
+```
+volatility hashdump -f <MEMORY_FILE> -y <SYSTEM_VARIABLE_ADDRESS> -s <SAM_VARIABLE_ADDRESS>
+```
+
+Get part of system logs(app, sys and sec)
+```
+volatility evtlogs --save-evt -f <MEMORY_FILE> --dump-dir <DIRECTORY_2_PUT_RESULTS>
+```
