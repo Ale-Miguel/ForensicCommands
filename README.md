@@ -237,7 +237,7 @@ reglookup -p '/Microsoft/Windows NT/CurrentVersion/Uninstall' <MOUNTED_DIR>/WIND
 
 Get all system users:
 ```
-samdump2 <MOUNTED_DIR>/WINDOWS/system32/config/system <MOUNTED_DIR>/WINDOWS/system32/config/SAM | cut -d':'-f1'
+samdump2 <MOUNTED_DIR>/WINDOWS/system32/config/system <MOUNTED_DIR>/WINDOWS/system32/config/SAM | cut -d':'-f1
 ```
 
 Get network interfaces configuration:
